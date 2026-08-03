@@ -96,7 +96,7 @@ header h1 {
 
 .post-header h2 {
     margin: 10px 0;
-    color: var(--cor-primaria);
+    color: var(--cor-contraste);
 }
 
 .artigo-autor {
