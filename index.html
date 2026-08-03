@@ -8,50 +8,121 @@
 </head>
 
 <body>
-    <header>
-        <h1>Blog de Notícias e Eventos da Escola</h1>
-        <p>Acompanhe as novidades, eventos e tudo o que acontece na nossa escola.</p>
+
+    <header class="header-principal">
+        <div class="logo">
+            <h1>🏫 Blog Escolar</h1>
+            <p>Acompanhe as novidades e eventos da nossa comunidade</p>
+        </div>
+        <nav class="menu-navegacao">
+            <ul>
+                <li><a href="#">Início</a></li>
+                <li><a href="#">Notícias</a></li>
+                <li><a href="#">Eventos</a></li>
+                <li><a href="#">Grêmio</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <main>
-        <article class="post">
-            <img src="img/imagem1.png" alt="Preparativos para a Festa Julina na quadra da escola">
-            
-            <div class="post-conteudo">
-                <h2>Contagem Regressiva: O que esperar da nossa Festa Junina 2026? Arebaba!</h2>
+    <div class="container-principal">
+        
+        <main class="feed-noticias">
+            <article class="post">
+                <header class="post-header">
+                    <span class="tag-categoria">🎉 Eventos</span>
+                    <h2>Contagem Regressiva: O que esperar da nossa Festa Junina 2026? Arebaba!</h2>
+                    <p class="artigo-autor">
+                        Publicado por <strong>Aluna Rebeca (3º Ano)</strong> • ⏱️ 2 min de leitura
+                    </p>
+                </header>
 
-                <p class="artigo-autor">
-                    <strong>Organização:</strong> Aluna Rebeca do Terceiro Ano do Ensino Médio
-                </p>
+                <img src="img/imagem1.png" alt="Preparativos para a Festa Julina na quadra da escola" class="post-imagem">
+                
+                <div class="post-conteudo">
+                    <p>
+                        Julho chegou e o coração da nossa escola já está batendo no ritmo da quadrilha! A época mais gostosa do ano está batendo à porta, e os preparativos para a nossa tradicional Festa Julina estão a todo vapor pelos corredores.
+                    </p>
+                    <p>
+                        Quem passa perto da quadra já consegue ouvir os ensaios da quadrilha, ver os passos ensaiados e o pessoal do grêmio recortando centenas de bandeirinhas coloridas. A expectativa está lá no alto, e tudo indica que este ano teremos uma das maiores festas que a escola já viu!
+                    </p>
+                    <p>
+                        Para começar a aquecer o clima, queremos saber o que está passando pela cabeça de vocês. Separamos os quatro pontos principais do evento para você votar e comentar abaixo!
+                    </p>
+                </div>
 
-                <p>
-                    Julho chegou e o coração da nossa escola já está batendo no ritmo da quadrilha! A época mais gostosa do ano está batendo à porta, e os preparativos para a nossa tradicional Festa Julina estão a todo vapor pelos corredores.
-                </p>
-                <p>
-                    Quem passa perto da quadra já consegue ouvir os ensaios da quadrilha, ver os passos ensaiados e o pessoal do grêmio recortando centenas de bandeirinhas coloridas. A expectativa está lá no alto, e tudo indica que este ano teremos uma das maiores festas que a escola já viu!
-                </p>
-                <p>
-                    Para começar a aquecer o clima, queremos saber o que está passando pela cabeça de vocês. Separamos os quatro pontos principais do evento para você votar e comentar:
-                </p>
-
-                <div class="interacao">
+                <div class="post-acoes">
                     <div class="botoes-reacao">
-                        <button type="button" aria-label="Curtir">
-                            ❤️ <span>0</span>
-                        </button>
-                        <button type="button" aria-label="Amei">
-                            🔥 <span>0</span>
-                        </button>
+                        <button type="button" aria-label="Curtir">❤️ <span>124</span></button>
+                        <button type="button" aria-label="Amei">🔥 <span>45</span></button>
                     </div>
+                    <div class="compartilhar">
+                        <span>Compartilhar:</span>
+                        <button type="button">📱 WhatsApp</button>
+                    </div>
+                </div>
+
+                <section class="secao-comentarios">
+                    <h3>💬 Comentários (2)</h3>
 
                     <form class="form-comentario">
-                        <label for="campo-comentario">Deixe seu comentário:</label>
-                        <textarea id="campo-comentario" placeholder="Escreva aqui..."></textarea>
-                        <button type="submit">Enviar</button>
+                        <label for="campo-comentario">Deixe sua opinião:</label>
+                        <textarea id="campo-comentario" placeholder="O que você mais quer ver na festa?" required></textarea>
+                        <button type="submit">Enviar Comentário</button>
                     </form>
-                </div>
-            </div>
-        </article>
-    </main>
+
+                    <div class="lista-comentarios">
+                        <div class="comentario-item">
+                            <strong>Lucas (3º B):</strong>
+                            <p>Tomara que tenha a barraca do correio elegante este ano! 💌</p>
+                        </div>
+                        <div class="comentario-item">
+                            <strong>Profª Ana:</strong>
+                            <p>Os ensaios estão incríveis! Parabéns à organização. 👏</p>
+                        </div>
+                    </div>
+                </section>
+            </article>
+        </main>
+
+        <aside class="sidebar">
+            
+            <section class="widget">
+                <h3>📊 Enquete da Semana</h3>
+                <p>Qual a melhor barraca da festa?</p>
+                <form class="form-enquete">
+                    <label><input type="radio" name="barraca" value="comida"> Comidas Típicas 🌽</label>
+                    <label><input type="radio" name="barraca" value="jogos"> Pescaria e Jogos 🎯</label>
+                    <label><input type="radio" name="barraca" value="correio"> Correio Elegante 💌</label>
+                    <button type="submit" class="btn-votar">Votar</button>
+                </form>
+            </section>
+
+            <section class="widget">
+                <h3>📅 Próximos Eventos</h3>
+                <ul class="lista-agenda">
+                    <li>
+                        <span class="data">15 JUL</span>
+                        <span class="evento">Ensaio Geral da Quadrilha</span>
+                    </li>
+                    <li>
+                        <span class="data">20 JUL</span>
+                        <span class="evento">Grande Festa Julina 🍿</span>
+                    </li>
+                    <li>
+                        <span class="data">25 JUL</span>
+                        <span class="evento">Início das Férias escolares 🎉</span>
+                    </li>
+                </ul>
+            </section>
+
+        </aside>
+
+    </div>
+
+    <footer class="rodape-principal">
+        <p>© 2026 Blog da Escola - Desenvolvido pelos alunos.</p>
+    </footer>
+
 </body>
 </html>
