@@ -1,15 +1,243 @@
 :root {
-    --cor-primaria:#8807d3;
-    --cor-secundaria:#970505;
-    --cor-fundo:#f8f6f6;
-    --cor-texto:#000000;
-    --cor-contraste:#1d1d1d;
-    --cor-botao:#cfcfcf;
+    --cor-primaria: #8807d3;
+    --cor-secundaria: #c56ae9;
+    --cor-fundo: #f8f6f6;
+    --cor-texto: #000000;
+    --cor-contraste: #a6e613;
+    --cor-botao: #cfcfcf;
 }
-body{
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
     max-width: 100vw;
     font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.6;
 }
-header{
+
+/* Header & Navegação */
+header {
     background-color: var(--cor-primaria);
+    color: var(--cor-contraste);
+    text-align: center;
+    margin: 0 auto;
+    padding: 24px 16px;
+}
+
+header h1 {
+    font-size: 2rem;
+    margin-bottom: 4px;
+}
+
+.menu-navegacao {
+    margin-top: 16px;
+}
+
+.menu-navegacao ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.menu-navegacao a {
+    color: var(--cor-contraste);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.menu-navegacao a:hover {
+    background-color: var(--cor-secundaria);
+    color: #ffffff;
+}
+
+/* Layout Principal */
+.container-principal {
+    max-width: 1100px;
+    margin: 20px auto;
+    padding: 0 16px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+}
+
+@media (min-width: 768px) {
+    .container-principal {
+        grid-template-columns: 2.5fr 1fr;
+    }
+}
+
+/* Post e Conteúdo */
+.post {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.tag-categoria {
+    background-color: var(--cor-secundaria);
+    color: #ffffff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+.post-header h2 {
+    margin: 10px 0;
+    color: var(--cor-primaria);
+}
+
+.artigo-autor {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 16px;
+}
+
+.post-figura {
+    margin: 16px 0;
+}
+
+.post-imagem {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    display: block;
+}
+
+.post-conteudo p {
+    margin-bottom: 12px;
+}
+
+/* Interações e Ações */
+.post-acoes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    padding: 12px 0;
+    margin: 20px 0;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    background-color: var(--cor-botao);
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: filter 0.2s;
+}
+
+button:hover {
+    filter: brightness(0.9);
+}
+
+.btn-principal, .btn-votar {
+    background-color: var(--cor-contraste);
+    color: #000000;
+}
+
+/* Comentários */
+.secao-comentarios {
+    margin-top: 24px;
+}
+
+.form-comentario {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 16px 0;
+}
+
+.form-comentario textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    min-height: 80px;
+    font-family: inherit;
+}
+
+.comentario-item {
+    background-color: var(--cor-fundo);
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+}
+
+/* Sidebar & Widgets */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.widget {
+    background: #ffffff;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.widget h3 {
+    color: var(--cor-primaria);
+    margin-bottom: 12px;
+    border-bottom: 2px solid var(--cor-secundaria);
+    padding-bottom: 4px;
+}
+
+.form-enquete {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.form-enquete label {
+    cursor: pointer;
+}
+
+.lista-agenda {
+    list-style: none;
+}
+
+.lista-agenda li {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px dashed #ddd;
+}
+
+.lista-agenda .data {
+    background-color: var(--cor-primaria);
+    color: var(--cor-contraste);
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 4px 6px;
+    border-radius: 4px;
+}
+
+/* Rodapé */
+footer {
+    background-color: var(--cor-primaria);
+    color: #ffffff;
+    text-align: center;
+    padding: 16px;
+    margin-top: 40px;
 }
