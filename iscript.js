@@ -29,3 +29,31 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+<!-- SDK do EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+<script>
+  // Inicialize o EmailJS com a sua Public Key
+  emailjs.init("SUA_PUBLIC_KEY_AQUI");
+
+  document.getElementById('meuFormulario').addEventListener('submit', function(event) {
+      event.preventDefault(); // Evita o recarregamento da página
+
+      // Parâmetros que combinam com os campos do formulário
+      const templateParams = {
+          nome: document.getElementById('nome').value,
+          email: document.getElementById('email').value,
+          mensagem: document.getElementById('mensagem').value
+      };
+
+      // 1. Envia a notificação para você ou gera a resposta
+      emailjs.send('SEU_SERVICE_ID', 'SEU_TEMPLATE_ID', templateParams)
+          .then(function(response) {
+              alert('Mensagem enviada com sucesso! Verifique seu e-mail.');
+              document.getElementById('meuFormulario').reset();
+          }, function(error) {
+              alert('Ocorreu um erro ao enviar. Tente novamente.');
+              console.log('ERRO:', error);
+          });
+  });
+</script>
