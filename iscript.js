@@ -1,15 +1,31 @@
-<script src="https://giscus.app/client.js"
-        data-repo="mrleopvp520/blog_3B_BMF_Leonardo"
-        data-repo-id="R_kgDOTsoSmg"
-        data-category="General"
-        data-category-id="DIC_kwDOTsoSms4DDEu7"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="preferred_color_scheme"
-        data-lang="pt"
-        crossorigin="anonymous"
-        async>
-</script>
+document.addEventListener('DOMContentLoaded', () => {
+    // Seleciona os botões de reação
+    const btnCurtir = document.querySelector('.botoes-reacao button[aria-label="Curtir"]');
+    const btnDescurtir = document.querySelector('.botoes-reacao button[aria-label="Não curtir"]');
+
+    // Lógica e animação do botão Curtir ❤️
+    if (btnCurtir) {
+        btnCurtir.addEventListener('click', () => {
+            const span = btnCurtir.querySelector('span');
+            span.textContent = parseInt(span.textContent) + 1;
+
+            btnCurtir.classList.add('animar-curtiu');
+            btnCurtir.addEventListener('animationend', () => {
+                btnCurtir.classList.remove('animar-curtiu');
+            }, { once: true });
+        });
+    }
+
+    // Lógica e animação do botão Não Curtir 👎
+    if (btnDescurtir) {
+        btnDescurtir.addEventListener('click', () => {
+            const span = btnDescurtir.querySelector('span');
+            span.textContent = parseInt(span.textContent) + 1;
+
+            btnDescurtir.classList.add('animar-descurtiu');
+            btnDescurtir.addEventListener('animationend', () => {
+                btnDescurtir.classList.remove('animar-descurtiu');
+            }, { once: true });
+        });
+    }
+});

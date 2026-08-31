@@ -241,3 +241,47 @@ footer {
     padding: 16px;
     margin-top: 40px;
 }
+/* Efeitos visuais para todos os botões */
+button, .btn-votar {
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                background-color 0.2s ease, 
+                box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+/* Animação ao passar o mouse (Hover) */
+button:hover, .btn-votar:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Animação ao clicar (Active) */
+button:active, .btn-votar:active {
+    transform: scale(0.95);
+}
+
+/* Animações específicas via JavaScript */
+
+/* Efeito de pulso para o botão Curtir (Corção) */
+@keyframes heartPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+
+.animar-curtiu {
+    animation: heartPulse 0.4s ease-in-out;
+    color: #e74c3c;
+}
+
+/* Efeito de balanço para o botão Não Curtir (Joinha) */
+@keyframes thumbShake {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(-15deg); }
+    75% { transform: rotate(15deg); }
+    100% { transform: rotate(0deg); }
+}
+
+.animar-descurtiu {
+    animation: thumbShake 0.4s ease-in-out;
+}
