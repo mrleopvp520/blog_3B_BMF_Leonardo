@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - Blog Escolar</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header-principal">
+        <div class="logo">
+            <h1>🏫 Blog Escolar</h1>
+            <p>Acompanhe as novidades e eventos da nossa comunidade</p>
+        </div>
+        <nav class="menu-navegacao">
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="noticias.html">Notícias</a></li>
+                <li><a href="eventos.html">Eventos</a></li>
+                <li><a href="gremio.html">Grêmio</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container-principal">
+        <main class="feed-noticias">
+            <article class="post">
+                <h2>Fale Conosco</h2>
+                <form class="form-comentario">
+                    <label for="nome">Seu Nome:</label>
+                    <input type="text" id="nome" required style="width: 100%; margin-bottom: 15px; padding: 8px;">
+
+                    <label for="email">Seu E-mail:</label>
+                    <input type="email" id="email" required style="width: 100%; margin-bottom: 15px; padding: 8px;">
+
+                    <label for="mensagem">Mensagem ou Sugestão:</label>
+                    <textarea id="mensagem" placeholder="Escreva sua mensagem aqui..." required></textarea>
+
+                    <button type="submit">Enviar Mensagem</button>
+                </form>
+            </article>
+        </main>
+    </div>
+
+    <footer class="rodape-principal">
+        <p>© 2026 Blog da Escola - Desenvolvido por alunos Leonardo.</p>
+    </footer>
+    <script src="iscript.js"></script>
+</body>
+</html>
