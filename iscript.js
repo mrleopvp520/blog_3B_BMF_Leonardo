@@ -57,3 +57,40 @@ document.addEventListener('DOMContentLoaded', () => {
           });
   });
 </script>
+
+// Cria o contexto de áudio do navegador
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+// Função para tocar um som curto de "pop/clique"
+function tocarSomClique() {
+  // Garante que o contexto de áudio está ativo
+  if (audioCtx.state === 'suspended') {
+    audioCtx.resume();
+  }
+
+  const osc = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+
+  osc.type = 'sine'; // Tipo de onda: sine, square, sawtooth, triangle
+  osc.frequency.setValueAtTime(800, audioCtx.currentTime); // Frequência em Hz
+  osc.frequency.exponentialRampToValueAtTime(400, audioCtx.currentTime + 0.05);
+
+  gain.gain.setValueAtTime(0.3, audioCtx.currentTime); // Volume
+  gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.05);
+
+  osc.connect(gain);
+  gain.connect(audioCtx.destination);
+
+  osc.start();
+  osc.stop(audioCtx.currentTime + 0.05);
+}
+
+// Associar o som a todos os botões e links
+document.addEventListener('DOMContentLoaded', () => {
+  const elementos = document.querySelectorAll('button, .btn, nav a');
+
+  elementos.forEach(elemento => {
+    elemento.addEventListener('click', tocarSomClique);
+  });
+});
+</script>
