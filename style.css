@@ -285,3 +285,21 @@ button:active, .btn-votar:active {
 .animar-descurtiu {
     animation: thumbShake 0.4s ease-in-out;
 }
+
+/* Estilos padrão (Modo Claro) */
+body {
+  background-color: #ffffff;
+  color: #333333;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Estilos para o Modo Escuro */
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+/* Opcional: ajustar links e cartões no modo escuro */
+body.dark-mode a {
+  color: #bb86fc;
+}

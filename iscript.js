@@ -142,3 +142,25 @@ document.addEventListener('DOMContentLoaded', () => {
     elem.addEventListener('mouseenter', tocarSomHover);
   });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const toggleBtn = document.getElementById("btn-dark-mode");
+
+  // Verifica se o utilizador já tinha o modo escuro ativado anteriormente
+  if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark-mode");
+  }
+
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+
+      // Guarda a preferência
+      if (document.body.classList.contains("dark-mode")) {
+        localStorage.setItem("theme", "dark");
+      } else {
+        localStorage.setItem("theme", "light");
+      }
+    });
+  }
+});
