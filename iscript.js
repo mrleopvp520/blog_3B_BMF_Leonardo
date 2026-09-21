@@ -58,39 +58,87 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 </script>
 
-// Cria o contexto de áudio do navegador
-const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+// Contexto de áudio global
+let audioCtx;
 
-// Função para tocar um som curto de "pop/clique"
-function tocarSomClique() {
-  // Garante que o contexto de áudio está ativo
+function obterAudioContext() {
+  if (!audioCtx) {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  }
   if (audioCtx.state === 'suspended') {
     audioCtx.resume();
   }
-
-  const osc = audioCtx.createOscillator();
-  const gain = audioCtx.createGain();
-
-  osc.type = 'sine'; // Tipo de onda: sine, square, sawtooth, triangle
-  osc.frequency.setValueAtTime(800, audioCtx.currentTime); // Frequência em Hz
-  osc.frequency.exponentialRampToValueAtTime(400, audioCtx.currentTime + 0.05);
-
-  gain.gain.setValueAtTime(0.3, audioCtx.currentTime); // Volume
-  gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.05);
-
-  osc.connect(gain);
-  gain.connect(audioCtx.destination);
-
-  osc.start();
-  osc.stop(audioCtx.currentTime + 0.05);
+  return audioCtx;
 }
 
-// Associar o som a todos os botões e links
-document.addEventListener('DOMContentLoaded', () => {
-  const elementos = document.querySelectorAll('button, .btn, nav a');
+// 1. Som de Clique Elegante (Tom Duplo Melódico)
+function tocarSomClique() {
+  const ctx = obterAudioContext();
+  const agora = ctx.currentTime;
 
-  elementos.forEach(elemento => {
-    elemento.addEventListener('click', tocarSomClique);
+  // Primeiro Tom
+  const osc1 = ctx.createOscillator();
+  const gain1 = ctx.createGain();
+  
+  osc1.type = 'sine';
+  osc1.frequency.setValueAtTime(523.25, agora); // Nota C5
+  gain1.gain.setValueAtTime(0.15, agora);
+  gain1.gain.exponentialRampToValueAtTime(0.001, agora + 0.08);
+
+  osc1.connect(gain1);
+  gain1.connect(ctx.destination);
+
+  osc1.start(agora);
+  osc1.stop(agora + 0.08);
+
+  // Segundo Tom (mais agudo, toca um instante depois)
+  const osc2 = ctx.createOscillator();
+  const gain2 = ctx.createGain();
+
+  osc2.type = 'sine';
+  osc2.frequency.setValueAtTime(659.25, agora + 0.03); // Nota E5
+  gain2.gain.setValueAtTime(0.15, agora + 0.03);
+  gain2.gain.exponentialRampToValueAtTime(0.001, agora + 0.12);
+
+  osc2.connect(gain2);
+  gain2.connect(ctx.destination);
+
+  osc2.start(agora + 0.03);
+  osc2.stop(agora + 0.12);
+}
+
+// 2. Som de Hover Suave (Pop Aveludado)
+function tocarSomHover() {
+  const ctx = obterAudioContext();
+  const agora = ctx.currentTime;
+
+  const osc = ctx.createOscillator();
+  const gain = ctx.createGain();
+
+  osc.type = 'sine';
+  osc.frequency.setValueAtTime(320, agora);
+  osc.frequency.exponentialRampToValueAtTime(440, agora + 0.04);
+
+  gain.gain.setValueAtTime(0.04, agora); // Volume bastante subtil
+  gain.gain.exponentialRampToValueAtTime(0.001, agora + 0.04);
+
+  osc.connect(gain);
+  gain.connect(ctx.destination);
+
+  osc.start(agora);
+  osc.stop(agora + 0.04);
+}
+
+// Associar os eventos aos elementos interativos
+document.addEventListener('DOMContentLoaded', () => {
+  const elementosClique = document.querySelectorAll('button, .btn, nav a, input[type="submit"]');
+  const elementosHover = document.querySelectorAll('nav a, button, .btn');
+
+  elementosClique.forEach(elem => {
+    elem.addEventListener('click', tocarSomClique);
+  });
+
+  elementosHover.forEach(elem => {
+    elem.addEventListener('mouseenter', tocarSomHover);
   });
 });
-</script>
